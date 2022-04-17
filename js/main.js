@@ -1,15 +1,28 @@
-//Example fetch using pokemonapi.co
-document.querySelector('button').addEventListener('click', getFetch)
+const fuzzysort = require('fuzzysort')
+console.log(fuzzysort)
 
+document.querySelector('button').addEventListener('click', searchCharacters)
+
+let characterData = []
 
 const headers = {
   'Accept': 'application/json',
   'Authorization': "Bearer "+ config.LOTR_API_KEY
 }
 
-function getFetch(){
+function searchCharacters(){
   const choice = document.querySelector('input').value
-  const url = "https://the-one-api.dev/v2/character?name="+choice
+  readTextFile("json/characters.json", function(text){
+    const results = fuzzysort.go(choice, JSON.parse(text), {key:'name'})
+    console.log(...results.slice(0,10))
+    getFetch(results[0].target)
+
+  })
+}
+
+function getFetch(input){
+  //const choice = document.querySelector('input').value
+  const url = "https://the-one-api.dev/v2/character?name="+input
 
   fetch(url, {headers: headers})
       .then(res => res.json()) // parse response as JSON
@@ -22,4 +35,24 @@ function getFetch(){
           console.log(`error ${err}`)
       });
 }
+
+function readTextFile(file, callback) {
+  var rawFile = new XMLHttpRequest();
+  rawFile.overrideMimeType("application/json");
+  rawFile.open("GET", file, true);
+  rawFile.onreadystatechange = function() {
+      if (rawFile.readyState === 4 && rawFile.status == "200") {
+          callback(rawFile.responseText);
+      }
+  }
+  rawFile.send(null);
+}
+
+readTextFile("json/characters.json", function(text){
+  var data = JSON.parse(text);
+  characterData.push(data)
+  console.log(data, characterData);
+});
+
+console.log(characterData)
 

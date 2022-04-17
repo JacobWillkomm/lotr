@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "browserify": "^17.0.0",
+    "fuzzysort": "^1.2.1"
+  },
+  "name": "lotr",
+  "version": "1.0.0",
+  "description": "sandbox for fuzzysort and lotr-api",
+  "main": "config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacobWillkomm/lotr.git"
+  }
+}
