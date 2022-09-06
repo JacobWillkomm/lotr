@@ -1,10 +1,6 @@
 # Lord of the Rings Anywhere
 
 # Introduction
-
-Lord of the Rings Anywhere is inspired from browser extensions like Dictonairy anywhere
-
-# How It's Made:
 Lord of the Rings Anywhere is inspired by browser extensions like Dictionary anywhere, and necessitated by references to character names in forums and reddit comments. The dictionary extensions allow users to double-click on a word, and a definition will appear without needing to leave the page. Lord of the Rings Anywhere will add similar functionality to the browser that provides a brief biography when a name from J. R. R. Tolkien’s work is double-clicked. 
 
 # How It's Made:
